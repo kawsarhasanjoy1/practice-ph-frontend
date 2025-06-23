@@ -12,10 +12,10 @@ import { useGetAcademicSemesterQuery } from "../../../redux/features/admin/acade
 import { useGetAcademicFacultyQuery } from "../../../redux/features/admin/academicManagement/academicFacultyApi";
 import { useGetAcademicDepartmentQuery } from "../../../redux/features/admin/academicManagement/academicDepartmentApi";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { studentZodSchema } from "./studentZodValidation";
 import { Controller, FieldValues } from "react-hook-form";
 import { useCreateStudentMutation } from "../../../redux/features/admin/userManagement/userManagementApi";
 import { toast } from "react-toastify";
+import { studentZodSchema } from "./users.zod.validation";
 
 const CreateStudent = () => {
   const { data: sData, isFetching: sIsFetching } =
@@ -70,7 +70,7 @@ const CreateStudent = () => {
   return (
     <Row>
       <Col span={24}>
-        <PHForm defaultValues={studentDefaultValues} onSubmit={handleToStudent}>
+        <PHForm defaultValues={studentDefaultValues} resolver={zodResolver(studentZodSchema)} onSubmit={handleToStudent}>
           <Row gutter={12}>
             <Divider>Personal info</Divider>
             <Col span={24} md={{ span: 12 }} lg={{ span: 8 }}>

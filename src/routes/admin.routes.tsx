@@ -1,8 +1,5 @@
 import { ReactNode } from "react";
 import AdminDashboard from "../pages/admin/AdminDashboard";
-import CreateAdmin from "../pages/admin/CreateAdmin";
-import CreateFaculty from "../pages/admin/CreateFaculty";
-
 import CreateAcademicSemester from "../pages/superAdmin/academicSemester/CreateAcademicSemester";
 import CreateAcademicFaculty from "../pages/superAdmin/academicFaculty/CreateAcademicFaculty";
 import AcademicFaculty from "../pages/superAdmin/academicFaculty/AcademicFaculty";
@@ -12,6 +9,12 @@ import AcademicSemester from "../pages/superAdmin/academicSemester/AcademicSemes
 import CreateStudent from "../pages/superAdmin/userManagement/CreateStudent";
 import Students from "../pages/superAdmin/userManagement/Students";
 import StudentDetails from "../pages/superAdmin/userManagement/StudentDetails";
+import CreateFaculty from "../pages/superAdmin/userManagement/CreateFaculty";
+import CreateAdmin from "../pages/superAdmin/userManagement/CreateAdmin";
+import CreateSemesterRegistration from "../pages/superAdmin/courseManagement/CreateSemesterRegistration";
+import SemesterRegistration from "../pages/superAdmin/courseManagement/SemesterRegistration";
+import CreateCourse from "../pages/superAdmin/courseManagement/CreateCourse";
+import Course from "../pages/superAdmin/courseManagement/Course";
 
 export const adminPath = [
   {
@@ -81,6 +84,31 @@ export const adminPath = [
         name: "Create admin",
         path: "create-admin",
         element: <CreateAdmin />,
+      },
+    ],
+  },
+  {
+    name: "Course Management",
+    children: [
+      {
+        name: "Create-Semester-Registration",
+        path: "create-semester-registration",
+        element: <CreateSemesterRegistration />,
+      },
+      {
+        name: "Semester-Registration",
+        path: "semester-registration",
+        element: <SemesterRegistration />,
+      },
+      {
+        name: "Create-Course",
+        path: "create-course",
+        element: <CreateCourse />,
+      },
+      {
+        name: "Courses",
+        path: "courses",
+        element: <Course />,
       },
     ],
   },

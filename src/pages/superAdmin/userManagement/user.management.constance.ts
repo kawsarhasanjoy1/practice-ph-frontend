@@ -54,3 +54,45 @@ export const studentDefaultValues = {
   admissionSemester: "",
 };
 
+
+
+// user.management.constance.ts
+
+export const facultyDefaultValues = {
+  name: {
+    firstName: "",
+    middleName: "",
+    lastName: "",
+  },
+  designation: "",
+  gender: "",
+  dateOfBirth: "",
+  bloodGroup: "",
+  email: "",
+  contactNo: "",
+  emergencyContactNo: "",
+  presentAddress: "",
+  permanentAddress: "",
+  profileImg: null,
+  academicFaculty: "",
+  academicDepartment: "",
+};
+
+
+export const adminDefaultValues = {
+  name: {
+    firstName: "",
+    middleName: "",
+    lastName: "",
+  },
+  designation: "",
+  gender: "",
+  dateOfBirth: "",
+  bloodGroup: "",
+  email: "",
+  contactNo: "",
+  emergencyContactNo: "",
+  presentAddress: "",
+  permanentAddress: "",
+  profileImg: null,
+};

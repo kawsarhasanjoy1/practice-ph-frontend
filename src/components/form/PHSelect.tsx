@@ -5,8 +5,9 @@ type TLable = {
   label: string;
   options: { value: string; label: string }[];
   disabled?: boolean;
+  mode?: "multiple" | undefined;
 };
-const PHSelect = ({ name, label, options, disabled }: TLable) => {
+const PHSelect = ({ name, label, options, disabled, mode }: TLable) => {
   const { control } = useFormContext();
   return (
     <Controller
@@ -16,6 +17,7 @@ const PHSelect = ({ name, label, options, disabled }: TLable) => {
         <Form.Item label={label}>
           <Select
             {...field}
+            mode={mode}
             size="large"
             disabled={disabled}
             defaultValue="Select"
