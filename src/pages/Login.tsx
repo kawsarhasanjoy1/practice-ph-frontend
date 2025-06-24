@@ -13,21 +13,23 @@ const Login = () => {
   const [login] = useLoginUserMutation();
   const dispatch = useAppDispatch();
   const handleToLogin = async (data: { id: string; password: string }) => {
-    console.log(data);
     try {
-      const res = (await login(data)) as any;
-      if (res?.error) {
-        toast.error(res?.error?.data?.message || "something went wrong");
-      }
+      const res = (await login(data).unwrap()) as any;
+
       if (res?.data) {
-        const token = res?.data?.data?.accessToken;
+        const token = res?.data?.accessToken;
         const user = verifyToken(token) as any;
         dispatch(loginUser({ user: user, token: token }));
         toast.success("user login successful");
-        navigate(`/${user?.role}/dashboard`);
+        if (res?.data?.needsPasswordChange) {
+          navigate(`/change-password`);
+        } else {
+          navigate(`/${user?.role}/dashboard`);
+        }
       }
     } catch (error: any) {
-      toast.error(error?.error?.data?.message || "something went wrong");
+      console.log(error);
+      toast.error(error?.data?.message || "something went wrong");
     }
   };
 
@@ -41,7 +43,10 @@ const Login = () => {
       }}
     >
       <div style={{ maxWidth: 360, width: "100%" }}>
-        <PHForm defaultValues={{id: '0001',password:'admin12345'}} onSubmit={handleToLogin}>
+        <PHForm
+          defaultValues={{ id: "0001", password: "superAdmin12" }}
+          onSubmit={handleToLogin}
+        >
           <Form.Item>
             <PHInput name="id" type="text" />
           </Form.Item>

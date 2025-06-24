@@ -6,6 +6,7 @@ import routeGenerator from "../utils/routeGenerator";
 import Login from "../pages/Login";
 import App from "../App";
 import PrivateRoute from "../components/layout/PrivateRoute";
+import ChangePassword from "../pages/ChangePassword/ChangePassword";
 
 export const router = createBrowserRouter([
   {
@@ -57,6 +58,10 @@ export const router = createBrowserRouter([
       </PrivateRoute>
     ),
     children: routeGenerator(adminPath),
+  },
+  {
+    path: "/change-password",
+    element: <ChangePassword />,
   },
   {
     path: "/login",
