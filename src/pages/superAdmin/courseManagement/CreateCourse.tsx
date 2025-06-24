@@ -32,7 +32,7 @@ const CreateCourse = () => {
 
     try {
       const res = await createCourse(courseData).unwrap();
-      console.log(res);
+
       if (res?.success) {
         toast.success(res?.message);
       }

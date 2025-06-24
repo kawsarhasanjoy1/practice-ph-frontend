@@ -5,6 +5,7 @@ import { adminPath } from "./admin.routes";
 import routeGenerator from "../utils/routeGenerator";
 import Login from "../pages/Login";
 import App from "../App";
+import PrivateRoute from "../components/layout/PrivateRoute";
 
 export const router = createBrowserRouter([
   {
@@ -23,22 +24,38 @@ export const router = createBrowserRouter([
   },
   {
     path: "/admin",
-    element: <App />,
+    element: (
+      <PrivateRoute role="admin">
+        <App />
+      </PrivateRoute>
+    ),
     children: routeGenerator(adminPath),
   },
   {
     path: "/superAdmin",
-    element: <App />,
+    element: (
+      <PrivateRoute role="superAdmin">
+        <App />
+      </PrivateRoute>
+    ),
     children: routeGenerator(adminPath),
   },
   {
     path: "/faculty",
-    element: <App />,
+    element: (
+      <PrivateRoute role="faculty">
+        <App />
+      </PrivateRoute>
+    ),
     children: routeGenerator(adminPath),
   },
   {
     path: "/student",
-    element: <App />,
+    element: (
+      <PrivateRoute role="student">
+        <App />
+      </PrivateRoute>
+    ),
     children: routeGenerator(adminPath),
   },
   {

@@ -1,4 +1,5 @@
 import { Form, Select } from "antd";
+import { useEffect } from "react";
 import { Controller, useFormContext, useWatch } from "react-hook-form";
 type TLable = {
   name: string;
@@ -6,9 +7,24 @@ type TLable = {
   options: { value: string; label: string }[];
   disabled?: boolean;
   mode?: "multiple" | undefined;
+  setId: any;
 };
-const PHSelect = ({ name, label, options, disabled, mode }: TLable) => {
+const PHSelectWithWatch = ({
+  name,
+  label,
+  options,
+  disabled,
+  mode,
+  setId,
+}: TLable) => {
   const { control } = useFormContext();
+  const watchValue = useWatch({
+    control,
+    name,
+  });
+  useEffect(() => {
+    setId(watchValue);
+  }, [watchValue]);
 
   return (
     <Controller
@@ -32,4 +48,4 @@ const PHSelect = ({ name, label, options, disabled, mode }: TLable) => {
   );
 };
 
-export default PHSelect;
+export default PHSelectWithWatch;

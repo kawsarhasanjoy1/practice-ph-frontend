@@ -4,7 +4,7 @@ import PrivateRoute from "./components/layout/PrivateRoute";
 
 function App() {
   return (
-    <PrivateRoute>
+    <PrivateRoute role={undefined}>
       <MainLayout />
     </PrivateRoute>
   );
